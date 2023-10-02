@@ -1,0 +1,125 @@
+html{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #212121;
+}
+
+html:has(input:checked){
+    background-color: #e8e8e8;
+}
+
+.switch { 
+    --w: 200px;
+    --h: 68px;
+    position: relative;
+    display: block;
+    width: var(--w);
+    height: var(--h);
+}
+
+.switch input{
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid #a8a4a4;
+    border-radius: var(--h);
+    overflow: hidden;
+
+    background-color: #0a0b3a;
+    background-image: radial-gradient(
+        circle at calc(var(--w)* 0.5) calc(var(--w)* 0.1),
+        #fff 2px, 
+        transparent 2px),
+        radial-gradient(circle at calc(var(--w)* 0.8) calc(var(--w)* 0.1), #fff 2px, transparent 2px),
+        radial-gradient(
+        circle at calc(var(--w)* 0.8) calc(var(--w)* 0.18),
+        #fff 2px, transparent 2px),
+        radial-gradient(
+        circle at calc(var(--w)* 0.7) calc(var(--w)* 0.25),
+        #fff 2px, transparent 2px),
+        radial-gradient(
+        circle at calc(var(--w)* 0.9) calc(var(--w)* 0.15),
+        #fff 2px, transparent 2px),
+        radial-gradient(
+        circle at calc(var(--w)* 0.85) calc(var(--w)* 0.25),
+        #fff 2px, transparent 2px);
+}
+
+.slider::before{
+    position: absolute;
+    content: "";
+    left: 8px;
+    bottom: 7px;
+    height: calc(var(--h) * 0.76);
+    width: calc(var(--h) * 0.76);
+    border-radius: 50%;
+
+    background-color: #f1f0f0;
+    transition: 0.4s;
+}
+
+.slider::after{
+    position: absolute;
+    content: "";
+    left: -35%;
+    right: 0;
+    height: 100%;
+    width: 100%;
+
+    background-image: radial-gradient(circle, rgba(255,255,255, 0.08) calc(var(--w)*0.2), transparent calc(var(--w)*0.2)),
+    radial-gradient(circle, rgba(255,255,255, 0.08) calc(var(--w)*0.35), transparent calc(var(--w)*0.35)),
+    radial-gradient(circle, rgba(255,255,255, 0.08) calc(var(--w)*0.5), transparent calc(var(--w)*0.5));
+
+    transition: 0.4s;
+}
+
+input:checked + .slider::before{
+    transform: translateX(calc(var(--w)* 0.66));
+    background-color: #fdbc1d;
+}
+
+input:checked + .slider::after{
+    transform: translateX(calc(var(--w)* 0.7));
+}
+
+input:checked + .slider{
+    border:1px solid #cdcccc;
+    background-color: #2196f3;
+    background-image: radial-gradient(
+        circle at calc(var(--w)*0) calc(var(--w)*0.3),
+        #fff calc(var(--w) * 0.15),
+        transparent calc(var(--w) * 0.1)
+    ), 
+    radial-gradient(
+        circle at calc(var(--w)*0.23) calc(var(--w)*0.28),
+        #fff calc(var(--w) * 0.15),
+        transparent calc(var(--w) * 0.1)
+    ),
+    radial-gradient(
+        circle at calc(var(--w)*0.4) calc(var(--w) * 0.38),
+        #fff calc(var(--w) * 0.15),
+        transparent calc(var(--w) * 0.1)
+    ),
+    radial-gradient(
+        circle at calc(var(--w)*0.15) calc(var(--w)*0.25),
+        rgba(255, 255, 255, 0.5) calc(var(--w) * 0.15),
+        transparent calc(var(--w) * 0.1)
+    ),
+    radial-gradient(
+        circle at calc(var(--w)*0.35) calc(var(--w)*0.25),
+        rgba(255, 255, 255, 0.5) calc(var(--w) * 0.15),
+        transparent calc(var(--w) * 0.1)
+    );
+}
